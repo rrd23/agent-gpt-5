@@ -1,0 +1,4 @@
+openai
+requests
+langdetect
+python-dotenv

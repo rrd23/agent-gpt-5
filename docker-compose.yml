@@ -1,0 +1,23 @@
+services:
+  weather-agent:
+    build: .
+    container_name: weather-agent
+    environment:
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+      - OPENWEATHER_API_KEY=${OPENWEATHER_API_KEY}
+      - DEFAULT_LANGUAGE=${DEFAULT_LANGUAGE:-ru}
+      - WEATHER_TIMEOUT=${WEATHER_TIMEOUT:-5}
+      - MODEL_NAME=${MODEL_NAME:-openai/gpt-5}
+    volumes:
+      - .:/app
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+
+  check-models:
+    build:
+      context: .
+      dockerfile: Dockerfile.check
+    container_name: model-checker
+    environment:
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
