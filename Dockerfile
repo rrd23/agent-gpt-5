@@ -1,6 +1,11 @@
 # Используем официальный Python образ
 FROM python:3.11-slim
 
+# Устанавливаем локаль для корректной работы с UTF-8
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+ENV PYTHONIOENCODING=utf-8
+
 # Устанавливаем рабочую директорию
 WORKDIR /app
 

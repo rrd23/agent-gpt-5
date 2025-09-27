@@ -100,8 +100,14 @@ def chat():
     print("✏️ Чтобы выйти, введи: exit\n")
 
     while True:
-        user_input = input("👤 Ты: ")
+        try:
+            user_input = input("👤 Ты: ")
+        except (EOFError, KeyboardInterrupt):
+            print("\n👋 До свидания!")
+            break
+            
         if user_input.lower() in ["exit", "выход"]:
+            print("👋 До свидания!")
             break
 
         input_list.append({"role": "user", "content": user_input})

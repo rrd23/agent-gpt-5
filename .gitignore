@@ -164,7 +164,7 @@ $RECYCLE.BIN/
 *.lnk
 
 # Docker
-.dockerignore
+# .dockerignore should be tracked in git
 
 # Logs
 logs/
